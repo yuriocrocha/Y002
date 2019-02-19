@@ -1,0 +1,22 @@
+
+<div class="container">
+<% for post in @posts.reverse %>
+  <div class="well">
+      <div class="media">
+  		<div class="media-body">
+      <h4 class="media-heading"><%= post.title %></h4>
+          	<%= image_tag(post.image_url.to_s, size: "400x150") %>
+          <p class="text-right">By Name</p>
+          <p align="justify">
+          	<%= truncate(post.content, :length => 7400) %> <%= link_to '[read more]', post %>
+          </p>
+          <ul class="list-inline list-unstyled">
+  			<li><span><i class="glyphicon glyphicon-calendar"></i><%= post_date post.date %> </span></li>
+            <li>|</li>
+            <span><i class="glyphicon glyphicon-comment"></i> <%= post.comments.count %> comments</span>
+			</ul>
+       </div>
+    </div>
+  </div>
+    <% end %>
+</div>

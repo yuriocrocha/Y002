@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default navbar">
+  <table align="center" width="90%"><tr><td>
+     <div class="navbar-header">
+      <a class="navbar-brand" href="/">Collaborative Blog</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      <% if session[:user_id] %>
+        <li class="active">
+        <%= link_to "All Posts", '/' %>
+        </li>
+        <li><%= link_to "Posted Posts", '/posts' %></li>
+        <li>
+              <%= link_to "New Post", '/posts/new' %>
+        </li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+ <% if session[:user_id] %>
+<li><%= link_to "Sign out", 'sign_out', method: :delete %></li>
+        <li>
+<table width="250px" cellspacing=20 cellpadding=1 border="0"><tr>
+<td>
+</td>
+<td align="center">Signed in as <b><%= session[:user_name] %></b></td><td align="center">
+            <%= image_tag session[:omniauth]['info']['image'],width: '50', height: '50', :class => "img-circle" %>
+
+          </td></tr></table>
+        </li>
+ <% else %>
+       <li class="nav-item pull-right add-space"><%=link_to(image_tag("login_facebook.png", size: "130x30", alt: "Facebook"), "auth/facebook", :class=>"nav-link") %></li>
+      <% end %>
+      </ul>
+</td>
+</tr>
+</table>
+    </div>
+  </div>
+</nav>
+
+
+

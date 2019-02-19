@@ -1,0 +1,30 @@
+
+<h1>Posts</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+    <th scope="col" width="150px">Date</th>
+      <th scope="col" width="300px" >Title</th>
+      <th scope="col" align="center">Edit Post</th>
+     <!--<th></th>
+      <th></th>
+      <th colspan="3"></th>-->
+    </tr>
+  </thead>
+
+
+
+  <tbody>
+<% for post in @posts.reverse %>
+      <tr>
+   <td align="center"><%= post.date %></td>
+        <td><%= link_to post.title, post %> </td>
+        <!--<td><%= link_to 'Show', post %></td>-->
+        <td align="center"><%= link_to 'Edit', edit_post_path(post) %></td>
+       <!--<td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Post', new_post_path %> | <%= link_to 'Back', :back %>
